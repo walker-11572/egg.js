@@ -12,6 +12,13 @@ class PostService extends Service {
     const Category = await this.app.mysql.get('category', { id: Category_id.category_id });
     return Category;
   }
+  async returnTag() {
+    const Tag_id = await this.app.mysql.get('post_tag', {
+      post_id: this.ctx.params.id,
+    });
+    const Tag = await this.app.mysql.select('tag', { id: Tag_id.tag_id });
+    return Tag;
+  }
 }
 
 module.exports = PostService;

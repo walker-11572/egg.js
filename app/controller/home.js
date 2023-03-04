@@ -17,6 +17,11 @@ class HomeController extends Controller {
     const Category = await ctx.service.home.returnCategory();
     ctx.body = Category;
   }
+  async getTag() {
+    const { ctx } = this;
+    const Tag = await ctx.service.home.returnTag();
+    ctx.body = Tag;
+  }
 }
 
 module.exports = HomeController;
