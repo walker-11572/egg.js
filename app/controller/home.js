@@ -7,6 +7,11 @@ class HomeController extends Controller {
     const { ctx } = this;
     ctx.body = 'hi, egg';
   }
+  async generateHomePosts() {
+    const { ctx } = this;
+    const posts = await ctx.service.home.returnPosts();
+    ctx.body = posts;
+  }
 }
 
 module.exports = HomeController;
