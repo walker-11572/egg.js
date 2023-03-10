@@ -22,7 +22,7 @@ class HomeController extends Controller {
     const Tag = await ctx.service.home.returnTag();
     ctx.body = Tag;
   }
-  async getPost() {
+  async getBlog() {
     const { ctx } = this;
     const Post = await ctx.service.home.returnPost();
     ctx.body = Post;
