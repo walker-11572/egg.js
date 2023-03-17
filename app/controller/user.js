@@ -15,5 +15,12 @@ class UserController extends Controller {
       ctx.status = 401;
     }
   }
+  async register() {
+    const { ctx, service } = this;
+    const result = await service.user.register();
+    ctx.body = {
+      success: result,
+    };
+  }
 }
 module.exports = UserController;

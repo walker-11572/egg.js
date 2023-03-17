@@ -12,5 +12,12 @@ class UserService extends Service {
     );
     return user_id;
   }
+  async register() {
+    const { ctx } = this;
+    const result = await this.app.mysql.insert('users', ctx.request.body);
+    console.log(result);
+    const insertSuccess = result.affectedRows === 1;
+    return insertSuccess;
+  }
 }
 module.exports = UserService;
