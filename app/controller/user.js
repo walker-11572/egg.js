@@ -25,6 +25,11 @@ class UserController extends Controller {
       ctx.status = 401;
     }
   }
+  async logout() {
+    const { ctx } = this;
+    ctx.session = null;
+    ctx.body = { success: true };
+  }
   async register() {
     const { ctx, service } = this;
     const result = await service.user.register();
