@@ -42,16 +42,41 @@ module.exports = appInfo => {
     agent: false,
   };
   const security = {
-    domainWhiteList: [ 'http://localhost:5174', 'http://localhost:5173' ],
+    domainWhiteList: [ 'http://127.0.0.1:5173' ],
     csrf: {
       enable: false,
       headerName: 'csrf-token', // 从header中读取csrf token
     },
+  };
+  const cors = {
+    credentials: true,
+  };
+  const sequelize = {
+    dialect: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    database: 'lifeline_community',
+    username: 'root',
+    password: '669483',
+    define: {
+      timestamps: false,
+      underscored: true,
+    },
+  };
+  const session = {
+    key: 'SESSION_ID',
+    maxAge: 24 * 3600 * 7000, // 7 天
+    httpOnly: true,
+    encrypt: true,
+    renew: true,
   };
   return {
     ...config,
     ...userConfig,
     mysql,
     security,
+    cors,
+    sequelize,
+    session,
   };
 };
