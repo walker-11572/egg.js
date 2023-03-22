@@ -32,5 +32,10 @@ class UserController extends Controller {
       success: result,
     };
   }
+  async getAvatar() {
+    const { ctx, service } = this;
+    const url = await service.user.getAvatar(ctx.params.id);
+    ctx.body = { ...url[0] };
+  }
 }
 module.exports = UserController;

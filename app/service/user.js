@@ -15,5 +15,19 @@ class UserService extends Service {
     const insertSuccess = result.affectedRows === 1;
     return insertSuccess;
   }
+  async getUsername(id) {
+    const username = await this.app.mysql.query(
+      'select username from users where id = ?',
+      [ id ]
+    );
+    return username;
+  }
+  async getAvatar(userId) {
+    const { app } = this;
+    const url = await app.mysql.query('select avatar from users where id = ?', [
+      userId,
+    ]);
+    return url;
+  }
 }
 module.exports = UserService;
