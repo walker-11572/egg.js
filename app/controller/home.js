@@ -7,6 +7,7 @@ class HomeController extends Controller {
     const { ctx } = this;
     ctx.body = 'hi, egg';
   }
+  // TODO 返回游客模式下的帖子列表
   async generateHomePosts() {
     const { ctx } = this;
     const posts = await ctx.service.home.returnPosts();

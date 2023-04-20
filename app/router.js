@@ -14,4 +14,7 @@ module.exports = app => {
   router.get('/api/isLiked', controller.like.isLiked);
   router.post('/api/like', controller.like.like);
   router.delete('/api/dislike/:user_id/:likeable_type/:likeable_id', controller.like.dislike);
+  router.get('/api/isCollected', controller.collection.isCollected);
+  router.post('/api/collect', controller.collection.collect);
+  router.delete('/api/uncollect/:user_id/:post_type/:post_id', controller.collection.uncollect);
 };

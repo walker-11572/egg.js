@@ -2,7 +2,7 @@ const Service = require('egg').Service;
 
 class PostService extends Service {
   async returnPosts() {
-    const posts = await this.app.mysql.select('post');
+    const posts = await this.app.mysql.select('posts');
     return posts;
   }
   async returnCategory() {
@@ -22,7 +22,7 @@ class PostService extends Service {
     return Tag;
   }
   async returnPost() {
-    const Post = await this.app.mysql.get('post', {
+    const Post = await this.app.mysql.get('posts', {
       id: this.ctx.params.id,
     });
     return Post;

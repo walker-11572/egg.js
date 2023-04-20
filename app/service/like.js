@@ -15,7 +15,7 @@ class LikeService extends Service {
   async like() {
     const result = await this.app.mysql.insert('like', this.ctx.request.body);
     await this.app.mysql.query(
-      'update post set liked_count = (liked_count + 1) where id = ?',
+      'update posts set liked_count = (liked_count + 1) where id = ?',
       [ this.ctx.request.body.likeable_id ]
     );
     const updateSuccess = result.affectedRows === 1;
@@ -27,7 +27,7 @@ class LikeService extends Service {
       likeable_id: `${this.ctx.params.likeable_id}`,
     });
     await this.app.mysql.query(
-      'update post set liked_count = (liked_count - 1) where id = ?',
+      'update posts set liked_count = (liked_count - 1) where id = ?',
       [ this.ctx.params.likeable_id ]
     );
     const updateSuccess = result.affectedRows === 1;
